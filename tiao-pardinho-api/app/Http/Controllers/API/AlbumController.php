@@ -13,7 +13,7 @@ class AlbumController extends Controller
    */
   public function index()
   {
-    return Album::all();
+    return Album::with('tracks')->get();
   }
 
   /**
@@ -31,7 +31,7 @@ class AlbumController extends Controller
   public function show(string $id)
   {
     $album = Album::findOrFail($id);
-    return response()->json($album, 200);
+    return response()->json($album->load('tracks'), 200);
   }
 
   /**
