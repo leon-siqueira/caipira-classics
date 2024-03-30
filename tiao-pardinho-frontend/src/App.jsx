@@ -11,6 +11,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Header />}>
+            <Route index element={<AlbumList />} />
             <Route path="/albums" element={<AlbumList />} />
             <Route path="/albums/:id" element={<Album />} />
             <Route path="/tracks/:id" element={<Track />} />
