@@ -1,24 +1,23 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/common/Header/index';
 import AlbumList from './pages/AlbumList/index';
 import Album from './pages/Album/index';
 import TrackList from './pages/TrackList/index';
 import Track from './pages/Track/index';
 
-function App() {
+export default function App() {
   return (
     <>
-      <Header />
       <Router>
-        <Switch>
-          <Route path="/albums/:id" component={Album} />
-          <Route path="/albums" component={AlbumList} />
-          <Route path="/tracks/:id" component={Track} />
-          <Route path="/tracks" component={TrackList} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route path="/albums" element={<AlbumList />} />
+            <Route path="/albums/:id" element={<Album />} />
+            <Route path="/tracks/:id" element={<Track />} />
+            <Route path="/tracks" element={<TrackList />} />
+          </Route>
+        </Routes>
       </Router>
     </>
   );
 }
-
-export default App;

@@ -1,18 +1,22 @@
-import { SearchBar } from '../SearchBar/index';
+import { Link, Outlet } from 'react-router-dom';
+import SearchBar from '../SearchBar/index';
 
-function Header() {
+
+export default function Header() {
   return (
-    <header>
-      <h1>Music Player</h1>
-      <SearchBar />
-      <nav>
-        <ul>
-          <li><a href="/albums">Albums</a></li>
-          <li><a href="/tracks">Tracks</a></li>
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header>
+        <h1>Music Player</h1>
+        <SearchBar />
+        <nav>
+          <ul>
+            <Link to="/albums">Albums</Link>
+            <Link to="/tracks">Tracks</Link>
+          </ul>
+        </nav>
+
+        <Outlet />
+      </header>
+    </>
   )
 }
-
-export default Header;
