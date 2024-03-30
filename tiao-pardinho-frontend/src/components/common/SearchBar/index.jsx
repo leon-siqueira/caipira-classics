@@ -1,4 +1,4 @@
-function SearchBar() {
+export default function SearchBar() {
   return (
     <div>
       <input type="text" placeholder="Search..." />
@@ -6,5 +6,3 @@ function SearchBar() {
     </div>
   )
 }
-
-export default SearchBar;
