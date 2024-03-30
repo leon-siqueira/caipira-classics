@@ -1,6 +1,23 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function AlbumList() {
+  const options = {
+    url: `${import.meta.env.VITE_APP_API_URL}/albums`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  axios(options)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   return (
     <div>
       <ul>
