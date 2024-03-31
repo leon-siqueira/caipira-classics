@@ -1,29 +1,29 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function AlbumList() {
-  const options = {
-    url: `${import.meta.env.VITE_APP_API_URL}/albums`,
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+  const [albums, setAlbums] = useState([]);
+
+  const getAlbums = async () => {
+    const { data } = await axios.get(`${import.meta.env.VITE_APP_API_URL}/albums`);
+    setAlbums(data);
   };
 
-  axios(options)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  useEffect(() => {
+    getAlbums();
+    return () => {
+      console.log('cleaning');
+    }
+  }, [])
+
 
   return (
     <div>
       <ul>
-        <li><Link to={"/albums/1"}>Album 1</Link></li>
-        <li><Link to={"/albums/2"}>Album 2</Link></li>
-        <li><Link to={"/albums/3"}>Album 3</Link></li>
+        {albums.map((album) => {
+            return(<li key={album.id}><Link to={`/albums/${album.id}`}>{album.name}</Link></li>)
+          })}
       </ul>
     </div>
   );
