@@ -1,22 +1,27 @@
 import { Link, Outlet } from 'react-router-dom';
 import SearchBar from '../SearchBar/index';
-
+import { AppBar, Tab, Tabs, Toolbar, Typography } from '@mui/material';
 
 export default function Header() {
   return (
     <>
-      <header>
-        <h1>Music Player</h1>
-        <SearchBar />
-        <nav>
-          <ul>
-            <Link to="/albums">Albums</Link>
-            <Link to="/tracks">Tracks</Link>
-          </ul>
-        </nav>
-
-        <Outlet />
-      </header>
+      <AppBar position="static" elevation={0}>
+        <Toolbar>
+          <Typography variant="h6">
+            Clássicos caipiras 🤠
+          </Typography>
+          <SearchBar />
+          <Tabs value={0}>
+            <Link to="/albums">
+              <Tab label="Albums" />
+            </Link>
+            <Link to="/tracks">
+              <Tab label="Tracks" />
+            </Link>
+          </Tabs>
+        </Toolbar>
+      </AppBar>
+      <Outlet />
     </>
   )
 }
