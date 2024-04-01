@@ -2,6 +2,7 @@ import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/Cards/Album";
+import style from "./style";
 
 export default function AlbumList() {
   const [albums, setAlbums] = useState([]);
@@ -17,11 +18,12 @@ export default function AlbumList() {
       console.log('cleaning');
     }
   }, [])
-  // creata style() function to use in sx prop
+
+  const styles = style();
 
   return (
-   <Container sx={{display: 'flex', justifyContent: 'center'}} >
-      <Grid container spacing={2} m={8} sx={{display: 'flex', justifyContent: 'center'}}>
+   <Container sx={styles.container} >
+      <Grid container spacing={0} mt={5} sx={styles.grid}>
         {albums.map((album) => {
             return(<AlbumCard key={album.id} album={album} />)
           })}
