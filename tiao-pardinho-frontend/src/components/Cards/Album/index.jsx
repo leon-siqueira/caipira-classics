@@ -13,24 +13,24 @@ export default function AlbumCard(props) {
   const styles = style();
 
   return (
-    <Grid item sx={{width: 250}}>
+    <Grid item sx={{width: 250}} mb={2} mx={1}>
       <CardActionArea component="a" href={`/albums/${album.id}`}>
         <Card sx={styles.card}>
           <CardMedia
             component="img"
             sx={{ width: 250 }}
+            // TODO: add img_url field on API and use it here as img_url || placeholder
             image={placeholder}
-            alt='Album cover image'
+            alt={`Album cover - ${album.name}`}
           />
-          <CardContent sx={{ flex: 1 }}>
-            {/* TODO: put those sx on style() */}
-            <Typography component="h4" variant="subtitle2" sx={{height: '3em', fontWeight: 'bold'}}>
+          <CardContent sx={styles.cardContent}>
+            <Typography component="h4" variant="subtitle2" sx={styles.albumName}>
               {album.name}
             </Typography>
             <Typography variant="subtitle2" color="text.secondary">
-              {album.year} • {duration(album.tracks)}
+              {album.year} • {tracksLabel(album.tracks)}<br/>
+              {duration(album.tracks)}
             </Typography>
-
           </CardContent>
         </Card>
       </CardActionArea>
@@ -47,14 +47,15 @@ function duration(tracks) {
   return [hoursStr, minutesStr].filter(Boolean).join(' ') || '0 minutes';
 }
 
+function tracksLabel(tracks) {
+  return `${tracks.length} track${tracks.length > 1 ? 's' : ''}`;
+}
+
 AlbumCard.propTypes = {
   album: PropTypes.shape({
     id: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     tracks: PropTypes.arrayOf(PropTypes.object),
-    // image: PropTypes.string.isRequired,
-    // imageLabel: PropTypes.string.isRequired,
-    // title: PropTypes.string.isRequired,
   }).isRequired,
 };
