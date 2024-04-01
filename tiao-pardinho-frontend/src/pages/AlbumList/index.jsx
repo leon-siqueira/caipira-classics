@@ -1,6 +1,7 @@
+import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import AlbumCard from "../../components/Cards/Album";
 
 export default function AlbumList() {
   const [albums, setAlbums] = useState([]);
@@ -16,15 +17,15 @@ export default function AlbumList() {
       console.log('cleaning');
     }
   }, [])
-
+  // creata style() function to use in sx prop
 
   return (
-    <div>
-      <ul>
+   <Container sx={{display: 'flex', justifyContent: 'center'}} >
+      <Grid container spacing={2} m={8} sx={{display: 'flex', justifyContent: 'center'}}>
         {albums.map((album) => {
-            return(<li key={album.id}><Link to={`/albums/${album.id}`}>{album.name}</Link></li>)
+            return(<AlbumCard key={album.id} album={album} />)
           })}
-      </ul>
-    </div>
+      </Grid>
+    </Container>
   );
 }
