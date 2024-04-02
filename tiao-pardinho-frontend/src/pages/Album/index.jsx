@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Grid, Table, TableRow, TableCell, Button } from "@mui/material";
+import { Box, Container, Typography, Grid, Table, TableRow, TableCell, Button, TableBody } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -53,13 +53,15 @@ export default function Album() {
         <Box mt={4}>
           <Typography variant="h4">Tracks</Typography>
           <Table>
-            {album.tracks.map((track, i) => (
-              <TableRow key={track.id}>
-                <TableCell sx={styles.trackNumber} >{i + 1}</TableCell>
-                <TableCell sx={{fontWeight: 'bold'}} >{track.name}</TableCell>
-                <TableCell align="right">{trackDuration(track.duration)}</TableCell>
-              </TableRow>
-            ))}
+            <TableBody>
+              {album.tracks.map((track, i) => (
+                <TableRow key={track.id}>
+                  <TableCell sx={styles.trackNumber} >{i + 1}</TableCell>
+                  <TableCell sx={{fontWeight: 'bold'}} >{track.name}</TableCell>
+                  <TableCell align="right">{trackDuration(track.duration)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </Box>
       </Container>
