@@ -11,13 +11,16 @@ class APIController extends Controller
 {
   public function search(Request $request)
   {
-    $searchTerm = $request->get('name');
-    $albums = Album::where('name', 'like', "%$searchTerm%")->get();
-    $tracks = Track::where('name', 'like', "%$searchTerm%")->get();
+    if ($request->get('name') != '') {
+      $searchTerm = $request->get('name');
+      $albums = Album::where('name', 'like', "%$searchTerm%")->get();
+      $tracks = Track::where('name', 'like', "%$searchTerm%")->get();
 
-    return response()->json([
-      'albums' => $albums,
-      'tracks' => $tracks,
-    ]);
+      return response()->json([
+        'albums' => $albums,
+        'tracks' => $tracks,
+      ]);
+    } else
+      return response()->json(['albums' => [], 'tracks' => []]);
   }
 }
