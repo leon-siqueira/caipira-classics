@@ -13,7 +13,7 @@ php artisan db:seed
 ```
 php artisan serve
 ```
-It should be running on [localhost:8000](http://localhost:8000)
+It should be running in [localhost:8000](http://localhost:8000)
 
 To test it you may import [Insomnia's collection](../tiao-pardinho-api-collection.json) available on this repository's root folder
 ## Routes
