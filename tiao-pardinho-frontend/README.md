@@ -8,4 +8,4 @@ cp .env
 ```
 npm run dev
 ```
-It should be available for you to access it in [localhost:5173](http://localhost:5173)
+It should be running in [localhost:5173](http://localhost:5173)
