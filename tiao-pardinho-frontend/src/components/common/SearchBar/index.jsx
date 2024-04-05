@@ -1,4 +1,4 @@
-import { TextField, debounce } from "@mui/material";
+import { Box, TextField, Typography, debounce } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import style from "./style";
 import { useEffect, useState } from "react";
@@ -27,26 +27,31 @@ export default function SearchBar() {
 
   return (
     <>
-      <TextField
-        id="search"
-        label="Search"
-        variant="standard"
-        sx={styles.searchBar}
-        value={searchTerm}
-        onChange={async(e) => await handleSearchChange(e)}
-        InputProps={{
-            endAdornment: <SearchIcon sx={styles.searchIcon}/>,
-          }} />
-        {/* TODO: Criar componente das sugestões */}
-       {searchResults.albums.map((album) => {
-        return(
-          <>
-            <div key={album.id}>
-              {album.name}
-            </div>
-          </>
-        )
-        })}
+      <Box>
+        <TextField
+          id="search"
+          label="Search"
+          variant="standard"
+          sx={styles.searchBar}
+          value={searchTerm}
+          onChange={async(e) => await handleSearchChange(e)}
+          InputProps={{
+              endAdornment: <SearchIcon sx={styles.searchIcon}/>,
+            }} />
+          {/* TODO: Criar componente das sugestões */}
+
+          <Box sx={styles.suggestionBox}>
+            {(searchResults.albums || []).map((album) => {
+              return(
+                <>
+                  <div key={album.id}>
+                    <Typography>{album.name}</Typography>
+                  </div>
+                </>
+              )
+              })}
+          </Box>
+        </Box>
     </>
   )
 }
