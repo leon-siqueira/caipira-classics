@@ -20,13 +20,6 @@ export default function style() {
     searchIcon: {
       color: "white",
     },
-    suggestionBox: {
-      position: 'absolute',
-      top: 56,
-      backgroundColor: '#FAFAFA',
-      minWidth: '300px',
-      color: '#000',
-      borderRadius: '2px'
-    }
+
   })
 }
