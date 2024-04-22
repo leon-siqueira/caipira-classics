@@ -39,8 +39,6 @@ export default function SearchBar() {
           InputProps={{
               endAdornment: <SearchIcon sx={styles.searchIcon}/>,
             }} />
-          {/* TODO: Criar componente das sugestões */}
-
           <Suggestions searchResults={searchResults}/>
         </Box>
     </>
