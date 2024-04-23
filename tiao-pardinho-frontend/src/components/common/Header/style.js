@@ -13,7 +13,7 @@ export default function style() {
     },
     tabs: {
       '& .Mui-selected': {
-        color: ["#a3c8ed", "!important"],
+        color: "#a3c8ed !important",
       },
       '& .MuiTabs-indicator': {
         backgroundColor: "#a3c8ed",

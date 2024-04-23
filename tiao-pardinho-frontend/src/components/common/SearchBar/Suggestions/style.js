@@ -23,7 +23,7 @@ export default function style() {
     },
     listTitle: {
       width: '100%',
-      backgroundColor: '#1976d2cc',
+      backgroundColor: '#4691db',
       paddingTop: 0.8,
       '& .MuiTypography-root': {
         color: '#FFF',
