@@ -14,7 +14,7 @@ class APIController extends Controller
     if ($request->get('name') != '') {
       $searchTerm = $request->get('name');
       $albums = Album::where('name', 'like', "%$searchTerm%")->get();
-      $tracks = Track::where('name', 'like', "%$searchTerm%")->get();
+      $tracks = Track::with('album')->where('name', 'like', "%$searchTerm%")->get();
 
       return response()->json([
         'albums' => $albums,
