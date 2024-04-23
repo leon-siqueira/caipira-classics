@@ -1,6 +1,7 @@
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import style from "./style";
+import { Fragment } from "react";
 
 export default function Suggestions(props) {
   const { searchResults } = props;
@@ -16,11 +17,11 @@ export default function Suggestions(props) {
           <List sx={styles.suggestionList}>
             {(searchResults.albums).map((album) => {
             return(
-              <>
-                <ListItem key={album.id} sx={styles.listItem}>
+              <Fragment key={album.id}>
+                <ListItem sx={styles.listItem}>
                   <ListItemText primary={album.name} secondary={album.year}/>
                 </ListItem>
-              </>
+              </Fragment>
               )
             })}
           </List>
@@ -34,11 +35,11 @@ export default function Suggestions(props) {
           <List sx={styles.suggestionList}>
             {(searchResults.tracks).map((track) => {
             return(
-              <>
-                <ListItem key={track.id} sx={styles.listItem}>
+              <Fragment key={track.id}>
+                <ListItem sx={styles.listItem}>
                   <ListItemText primary={track.name} secondary={track.album.name}/>
                 </ListItem>
-              </>
+              </Fragment>
               )
             })}
           </List>
