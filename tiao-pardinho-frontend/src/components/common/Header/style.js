@@ -10,6 +10,14 @@ export default function style() {
     },
     logo: {
       padding: "0.2em",
+    },
+    tabs: {
+      '& .Mui-selected': {
+        color: ["#a3c8ed", "!important"],
+      },
+      '& .MuiTabs-indicator': {
+        backgroundColor: "#a3c8ed",
+      }
     }
   })
 }
