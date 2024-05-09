@@ -9,6 +9,7 @@ export default function SearchBar() {
   const styles = style();
   const [searchResults, setSearchResults] = useState({ albums: [], tracks: []});
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     const search = async () => {
@@ -33,13 +34,18 @@ export default function SearchBar() {
           id="search"
           label="Search"
           variant="standard"
+          autoComplete="off"
           sx={styles.searchBar}
           value={searchTerm}
-          onChange={async(e) => await handleSearchChange(e)}
+          onChange={(e) => handleSearchChange(e)}
+          onFocus={() => setIsSearching(true)}
+          onBlur={() => setIsSearching(false)}
           InputProps={{
               endAdornment: <SearchIcon sx={styles.searchIcon}/>,
             }} />
-          <Suggestions searchResults={searchResults}/>
+          {
+            isSearching && <Suggestions searchResults={searchResults} />
+          }
         </Box>
     </>
   )
