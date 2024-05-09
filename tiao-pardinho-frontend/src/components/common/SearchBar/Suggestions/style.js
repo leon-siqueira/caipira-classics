@@ -12,10 +12,10 @@ export default function style() {
     },
     suggestionList: {
       paddingY: 0,
-      '& li:last-child': {
+      '& a:last-child': {
         borderBottom: 'none'
       },
-      '& li:hover': {
+      '& a:hover': {
         backgroundColor: '#EEE',
 
         transition: 'background-color 0.2s'

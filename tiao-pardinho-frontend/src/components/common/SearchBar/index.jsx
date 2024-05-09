@@ -27,6 +27,12 @@ export default function SearchBar() {
     setSearchTerm(event.target.value);
   }
 
+  const handleSearchBlur = () => {
+    setTimeout(() => {
+      setIsSearching(false)
+    }, 150);
+  }
+
   return (
     <>
       <Box>
@@ -39,7 +45,7 @@ export default function SearchBar() {
           value={searchTerm}
           onChange={(e) => handleSearchChange(e)}
           onFocus={() => setIsSearching(true)}
-          onBlur={() => setIsSearching(false)}
+          onBlur={() => handleSearchBlur()}
           InputProps={{
               endAdornment: <SearchIcon sx={styles.searchIcon}/>,
             }} />
